@@ -1,0 +1,21 @@
+{
+  "name": "euler",
+  "version": "1.0.0",
+  "description": "Euler is Infinity's real-time communications engine.",
+  "main": "app.js",
+  "repository": "git@github.com:itsmingjie/euler.git",
+  "author": "Mingjie Jiang<jiang@mingjie.dev>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "redis": "^3.0.2",
+    "socket.io": "^2.3.0",
+    "socket.io-redis": "^5.4.0"
+  }
+}
