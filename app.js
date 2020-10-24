@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const config = require('./config')
 const app = express()
 
@@ -20,6 +21,7 @@ io.on('connection', (socket) => {
   })
 })
 
+app.use(cors())
 app.use('/', express.static('./static'))
 
 const api = express.Router()
