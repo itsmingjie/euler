@@ -29,14 +29,27 @@ app.use('/api', api)
 
 api.use(bodyParser.json())
 api.use((req, res, next) => {
+  console.log(req.headers)
+
   if (!req.headers.authorization) {
-    res.status(401)
+    res.status(401).json({
+      success: false,
+      title: 'Unauthorized!',
+      message: 'Authentication token required.'
+    })
   } else if (req.headers.authorization !== config.euler_token) {
-    // accessing the following parameters requries authorization
-    res.status(403)
+    res.status(403).json({
+      success: false,
+      title: 'Invalid Token!',
+      message: 'Authentication token required.'
+    })
   } else {
     next()
   }
+})
+
+api.get('/ping', (req, res) => {
+  res.send("pong")
 })
 
 api.post('/alert', (req, res) => {
