@@ -49,7 +49,7 @@ api.use((req, res, next) => {
 })
 
 api.get('/ping', (req, res) => {
-  res.send("pong")
+  res.send('pong')
 })
 
 api.post('/alert', (req, res) => {
@@ -86,9 +86,18 @@ api.post('/alert', (req, res) => {
 api.post('/announcement', (req, res) => {
   io.emit('announcement', req.body.id)
   res.json({
-      success: true,
-      title: 'Success!',
-      message: `An announcement has been posted to everyone.`
+    success: true,
+    title: 'Success!',
+    message: `An announcement has been posted to everyone.`
+  })
+})
+
+api.post('/refresh', (req, res) => {
+  io.emit('refresh')
+  res.json({
+    success: true,
+    title: 'Success!',
+    message: `A refresh intent has been sent to all teams online. Their pages will be reloaded within the next 10-20 seconds.`
   })
 })
 
