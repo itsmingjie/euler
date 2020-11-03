@@ -5,7 +5,10 @@ const config = require('./config')
 const app = express()
 
 const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const io = require('socket.io')(http, {
+  pingInterval: 20000,
+  pingTimeout: 10000
+})
 
 const redis = require('redis')
 const redisAdapter = require('socket.io-redis')
